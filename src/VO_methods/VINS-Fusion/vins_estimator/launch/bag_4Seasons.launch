@@ -1,0 +1,15 @@
+<launch>
+
+
+<!--    <arg name="config_path" value="$(find vins)/../config/4seasons/4seasons_mono_imu_config.yaml"/>-->
+    <arg name="config_path" value="$(find vins)/../config/4seasons/4seasons_stereo_config.yaml"/>
+
+
+    <node name="vins_estimator" pkg="vins" type="vins_node" output="screen" args="$(arg config_path)"/>
+<!--    <include file="$(find vins)/launch/vins_rviz.launch"/>-->
+    <node name="rvizvisualisation" pkg="rviz" type="rviz" output="log" args="-d $(find vins)/../config/vins_rviz_config2.rviz" />
+
+    <node pkg="rosbag" type="record" name="record"
+          args="/vins_estimator/path /vins_estimator/odom /camera/image_raw/compressed -O VIO_kitti.bag"/>
+
+</launch>

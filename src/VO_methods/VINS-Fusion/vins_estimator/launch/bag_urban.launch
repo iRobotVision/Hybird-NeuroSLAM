@@ -1,0 +1,19 @@
+<launch>
+    <!-- <arg name="config_path" value="$(find vins)/../config/urban/urban_stereo_config.yaml"/> -->
+    <param name="config_path" type="string" value="$(find vins)/../config/urban/urban_stereo_imu_config.yaml"/>
+
+    <!--    traj_format 0:kitti 1:tum-->
+    <param name="traj_format" type="int" value="1"/>
+    <param name="traj_outpath" type="string" value="$(find vins)/../results/"/>
+
+    <node name="vins" pkg="vins" type="vins_node" output="screen"/>
+
+    <!-- <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vins)/../config/urban.rviz" /> -->
+
+    <!-- <node pkg="rosbag" type="record" name="record"
+          args="/vins/path /vins/odom /camera/image_raw/compressed  -O /home/daybeha/Documents/github/vins_ws/VIO_urban33_.bag"/> -->
+    <node pkg="rosbag" type="record" name="record"
+          args="/vins/path /vins/odom /camera/image_raw/compressed /camera/key_image/compressed
+                    -O /home/daybeha/Documents/github/vins_ws/VIO_urban28_keyframe_.bag"/>
+
+</launch>

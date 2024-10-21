@@ -1,0 +1,15 @@
+<launch>
+
+    <!--    <machine name="local_alt" address="localhost" default="true"/>-->
+    <param name="Voc_file" type="string" value="$(find ORB_SLAM3)/../../../Vocabulary/ORBvoc.txt"/>
+    <param name="config_file" type="string" value="$(find ORB_SLAM3)/config/4Seasons.yaml"/>
+    <param name="do_rectify" type="bool" value="false"/>
+
+    <node name="Stereo_pub" pkg="ORB_SLAM3" type="Stereo_pub" output="screen" cwd="node" required="true"/>
+
+    <!-- 启动rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ORB_SLAM3)/config/rviz.rviz" />
+
+    <node pkg="rosbag" type="record" name="record"
+          args="/orb/path /orb/odom /camera/image_raw/compressed -O stereo_4seasons.bag"/>
+</launch>

@@ -1,0 +1,23 @@
+<launch>
+    <!-- <param name="config_path" type="string" value="$(find vins)/../config/kitti_odom/kitti_config00-02.yaml"/> -->
+   <param name="config_path" type="string" value="$(find vins)/../config/kitti_odom/kitti_config04-12.yaml"/>
+
+    <!--    traj_format 0:kitti 1:tum-->
+    <param name="traj_format" type="int" value="0"/>
+    <param name="traj_outpath" type="string" value="$(find vins)/../results/"/>
+
+    <!-- <node name="kitti" pkg="vins" type="vins_node" output="screen"/> -->
+    <node name="vins" pkg="vins" type="vins_node" output="screen"/>
+
+     <!-- <node name="rviz" pkg="rviz" type="rviz" output="log" args="-d $(find vins)/../config/vins_rviz.rviz" /> -->
+
+  <node pkg="rosbag" type="record" name="record"
+          args="/vins/path /vins/odom /camera/image_raw/compressed /camera/key_image/compressed -O /home/daybeha/Documents/github/vins_ws/VO_kitti08_keyframe_.bag"/>
+    <!-- <node pkg="rosbag" type="record" name="record"
+         args="/vins/path /vins/odom /camera/key_image/compressed -O /home/daybeha/Documents/github/vins_ws/VO_kitti00_keyframe.bag"/> -->
+
+
+<!--    <node name="loop_fusion" pkg="loop_fusion_node" type="loop_fusion_node" args="$(find vins)/../config/kitti_odom/kitti_config00-02.yaml"-->
+<!--          output="screen"/>-->
+
+</launch>

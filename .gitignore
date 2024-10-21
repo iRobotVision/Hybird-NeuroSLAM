@@ -1,0 +1,17 @@
+cmake-build-debug/
+.idea/
+.git/
+.catkin_tools/
+.vscode/
+build/
+devel/
+install/
+logs/
+log/
+stlucia_2007_images/
+results/*
+
+
+*.zip
+*.bag
+
