@@ -9,8 +9,7 @@ install/
 logs/
 log/
 stlucia_2007_images/
-results/*
-
+results/
 
 *.zip
 *.bag
