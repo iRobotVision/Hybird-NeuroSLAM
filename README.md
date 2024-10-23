@@ -25,13 +25,12 @@ Based on high-precision Visual-Inertial odometry, a precise and robust visual me
 ![{Pipeline](images/system_arch.jpg)
 
 
-> We will open source the source code of this work after the paper is accepted.
+> <font color=green>**We will open source the source code of this work after the paper is accepted！** </font>
 
 
 ## Experiment Results
 
-> **Running on:** AMD R7 5800H with 16G RAM DDR4 3200MHz
-
+<!-- > **Running on:** AMD R7 5800H with 16G RAM DDR4 3200MHz -->
 
 
 - **Chronological ordered snapshots of active grid cells and HD cells during the processing of sequence 39 of the Complex Urban dataset.**
