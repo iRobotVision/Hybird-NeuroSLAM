@@ -1,0 +1,20 @@
+<launch>
+
+    <param name="config_file" type="string" value="$(find ratslam_ros)/config/urban.yaml"/>
+    <param name="img_topic" type="string" value="/camera/image_raw"/>
+    <!--    <param name="img_topic" type="string" value="/camera/key_image"/>-->
+    <param name="odom_topic" type="string" value="/vins/odom"/>
+
+<!--    traj_format 0:kitti 1:tum-->
+    <param name="traj_format" type="int" value="1"/>
+    <param name="traj_outpath" type="string" value="$(find ratslam_ros)/results/"/>
+
+
+<!--    Hybird-NeuroSLAM-->
+    <node name="ratslam_from_odom" pkg="ratslam_ros" type="ratslam_from_odom_opt" output="screen"
+          args="_image_transport:=compressed" cwd="node" required="true"/>
+    <node name="ShowCells" pkg="ratslam_ros" type="show_cells.py" output="screen" required="true"/>
+
+    <!-- 启动rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find ratslam_ros)/config/rviz/kitti.rviz" />
+</launch>

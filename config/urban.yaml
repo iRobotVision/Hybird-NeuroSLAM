@@ -1,0 +1,94 @@
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+camera:
+  type: "PinHole"
+
+  # Camera calibration and distortion parameters (OpenCV)
+  fx: 816.402214740649
+  fy: 817.383885628095
+  cx: 608.826584275826
+  cy: 266.688656524394
+
+  k1: -0.050040485769466
+  k2: 0.120012171706205
+  p1: -0.0006259805906096402
+  p2: -0.001182506391485
+  k3: -0.063505208000120
+
+  #  k1: -5.6143027800000002e-02
+  #  k2: 1.3952563200000001e-01
+  #  p1: -1.2155906999999999e-03
+  #  p2: -9.7281389999999998e-04
+
+  # Camera frames per second
+  fps: 10
+
+  # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+  RGB: 1
+
+  # Camera resolution
+  width: 1280
+  height: 560
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer:
+  KeyFrameSize: 0.1
+  KeyFrameLineWidth: 1.0
+  GraphLineWidth: 1.0
+  PointSize: 2.0
+  CameraSize: 0.15
+  CameraLineWidth: 2.0
+  ViewpointX: 0.0
+  ViewpointY: -10.0
+  ViewpointZ: -0.1
+  ViewpointF: 2000.0
+
+
+#--------------------------------------------------------------------------------------------
+# Ratslam Parameters
+#--------------------------------------------------------------------------------------------
+ratslam:
+  image_crop_x_min: 100
+  image_crop_x_max: 1180 #1100
+  image_crop_y_min: 100 #50
+  image_crop_y_max: 460 #300
+  down_sample: 2
+  vt_match_threshold :  0.085
+  template_x_size: 60
+  template_y_size: 10
+  vt_shift_match :  5
+  vt_step_match :  1
+  vt_normalisation :  0.4
+  pc_vt_restore : 0.04
+
+  pc_cell_x_size : 2
+  pc_dim_xy :  30
+  pc_dim_th: 36
+  exp_delta_pc_threshold :  1.0
+  pc_vt_inject_energy :  0.15
+  vt_active_decay :  1.0
+
+  exp_loops: 20
+
+  act_level_threshold: 90   # 90 for urbans, 100 for kitti
+  min_delta_threshold: 4.0  # 4 for urban39, 10.0 for others
+  scale_factor: 10
+  vocab_file: /home/daybeha/Documents/github/Hybird-NeuroSLAM/myratslam_ws/src/ratslam_ros/src/gaussianslam/orbvoc.dbow3
+  min_loop_frame_dis: 500
+  loop_cnt_thres: 2  # 1 for keyframe, 2 for normal
+  loop_score_thres: 0.05 # 0.045 for kitti, 0.05 for urbans
+
+  HD_distribution: 1  # 0: Bayesian; 1: Von Mises
+  cali_mode: 1  #0:直接拉回原细胞位置 1:校准方向 2:校准方向和位置
+
+draw:
+  enable: true
+  vt_window_width: 640
+  vt_window_height: 900
+  exp_map_size: 500
+  posecells_size: 250
+  media_path: /home/daybeha/Documents/github/Hybird-NeuroSLAM/myratslam_ws/src/ratslam_ros/src/media
+  image_file: irat_sm.tga
