@@ -25,7 +25,8 @@ Based on high-precision Visual-Inertial odometry, a precise and robust visual me
 ![{Pipeline](images/system_arch.jpg)
 
 
-> <font color=green>**We will release the source code of this work after the paper is accepted！** </font>
+<!-- > <font color=green>**We will release the source code of this work after the paper is accepted！** </font> -->
+> <font color=green>**The source code is coming soon！** </font>
 
 
 ## Experiment Results
